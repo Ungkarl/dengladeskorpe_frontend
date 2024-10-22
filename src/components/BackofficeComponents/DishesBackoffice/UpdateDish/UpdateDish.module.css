@@ -16,26 +16,35 @@
     
 }
 
-.formContainer {
+.outerFormContainer {
     width: 100%;
-        max-width: 400px;
+        max-width: 600px;
         border-radius: 5px;
         padding: 30px;
         display: flex;
         flex-direction: column;
-       
+        position: relative;
         border-radius: 5px;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.3);
+        max-height: 90vh; /* Begræns højden af formContainer */
+        overflow-y: auto;
+}
+
+.formContainer {
+    width: 100%;
+    padding: 30px;
+        max-width: 600px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         position: relative;
-        max-height: 90vh; /* Begræns højden af formContainer */
-        overflow-y: auto; /* Tillad lodret scrolling */
-        margin-top: 20px; /* Tilføj margin for at sikre, at toppen af indholdet er synligt */
-        margin-bottom: 20px; /* Tilføj margin for at sikre, at bunden af indholdet er synligt */
+       
+    
 }
 .backButton {
     z-index: 99;
@@ -50,6 +59,7 @@
     color: var(--dark-grey);
     cursor: pointer;
     transition: 0.3s;
+    z-index: 99;
 }
 
 
@@ -84,8 +94,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column-reverse;
-    padding: 10px;
-    gap: 10px;
+    /* gap: 10px; */
     width: 100%;
 }
 

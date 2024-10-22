@@ -85,13 +85,15 @@ const UpdateDish = () => {
 
     return (
         <div className={styles.updateDishContainer}>
+            <div className={styles.outerFormContainer}>
+            <Link to="/backoffice/dishes" className={styles.backButton}>
+                    <IoIosArrowRoundBack />
+                </Link>
             <form
                 className={styles.formContainer}
                 onSubmit={handleSubmit(onSubmit)}
             >
-                 <Link to="/backoffice/dishes" className={styles.backButton}>
-                    <IoIosArrowRoundBack />
-                </Link>
+                 
                 <label className={`${styles.upd_label} ${styles.imgLabel}`}>
                     Upload Billede
                     <img className={styles.dishImg} src={image} alt="Dish Preview" />
@@ -164,6 +166,9 @@ const UpdateDish = () => {
                     Update Dish
                 </button>
             </form>
+
+            </div>
+            
         </div>
     );
     

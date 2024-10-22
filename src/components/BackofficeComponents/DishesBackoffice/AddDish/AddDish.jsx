@@ -59,16 +59,18 @@ const AddDish = () => {
 
     return (
         <div className={styles.addEmployeeContainer}>
+          <div className={styles.outerFormContainer}>
+          <Link to="/backoffice/employees" className={styles.backButton}>
+              <IoIosArrowRoundBack />
+            </Link>
           <form
             className={styles.formContainer}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <Link to="/backoffice/employees" className={styles.backButton}>
-              <IoIosArrowRoundBack />
-            </Link>
+            
             
             <label className={`${styles.add_label} ${styles.imgLabel}`}>
-              Upload Billede
+           
               <img
                 className={styles.employee_img}
                 src={image}
@@ -146,6 +148,8 @@ const AddDish = () => {
               OPRET RET
             </button>
           </form>
+          </div>
+          
         </div>
       );
 
