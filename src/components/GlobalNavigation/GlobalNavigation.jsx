@@ -12,17 +12,23 @@ const GlobalNavigation = () => {
       //Function for toggling the navigation
       const toggleMenu = () => {
         setIsOpen(!isOpen);
+        
       
     };
+
+    const closeMenu = () => {
+        setIsOpen(false);
+    }
     //Frontend for the global navigation
 
     return (
+        <>
         <nav className={styles.navigation_bar}>
-            <div className={styles.logo}>
+            <div className={styles.logo} onClick={closeMenu}>
                 <Link to="/"><img src="/assets/images/logo.png" alt="" /></Link>
             </div>
             <div className={styles.basket_burger_container}>
-                <div className={styles.basket}>
+                <div className={styles.basket} onClick={closeMenu}>
                     <Link to="/basket">
                     <img src="/assets//images/basket_icon.png" alt="" />
                     <p>{basketQuantity}</p>
@@ -33,7 +39,13 @@ const GlobalNavigation = () => {
                     <div className={styles.bar}></div>
                     <div className={styles.bar}></div>
                 </div>
-                <ul className={`${styles.navigation} ${isOpen ? styles.show : ''}`}>
+               
+
+            </div>
+
+            
+        </nav>
+        <ul className={`${styles.navigation} ${isOpen ? styles.show : ''}`}>
             <li>
                     <NavLink 
                         onClick={toggleMenu} 
@@ -80,11 +92,7 @@ const GlobalNavigation = () => {
                     </NavLink>
                 </li>
             </ul>
-
-            </div>
-
-            
-        </nav>
+        </>
     )
 
 

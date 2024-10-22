@@ -5,7 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import BackofficeNavigation from '../../components/BackofficeComponents/BackofficeNavigation/BackofficeNavigation';
 
 const BackofficePage = () => {
-    const { signedIn,  token,  role, users, setRole,  } = useAuth();
+    const { signedIn, role, users, setRole,  } = useAuth();
     useEffect(() => {
         setRole("");
     }, [signedIn]);

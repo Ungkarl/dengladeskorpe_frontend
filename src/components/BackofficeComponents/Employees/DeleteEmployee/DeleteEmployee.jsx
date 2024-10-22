@@ -14,13 +14,13 @@ const DeleteEmployee = () => {
     const { deleteEmployee } = useOutletContext();
 
     useEffect(() => {
-        const fetchProduct = async () => {
+        const fetchEmployee = async () => {
             // Simuleret ventetid på 2 sekunder
             await new Promise((resolve) => setTimeout(resolve, 2000));
             const employee = employees.find(employee => employee._id === id);
             setEmployee(employee);
         }
-        fetchProduct();
+        fetchEmployee();
     }, [employees, id]);
 
     const handleDelete = async (e) => {
@@ -46,13 +46,13 @@ const DeleteEmployee = () => {
     }
 
     return (
-        <div className={styles.deleteProductContainer}>
-            <div className={styles.product}>
-                <Link to="/backoffice/employees" className={styles.productBackButton}><IoIosArrowRoundBack /></Link>
-                <div className={styles.productImgContainer}>
-                    <img className={styles.productImg} src={`${employee.image}`} alt="Employee" />
+        <div className={styles.deleteEmployeeContainer}>
+            <div className={styles.employee}>
+                <Link to="/backoffice/employees" className={styles.employeeBackButton}><IoIosArrowRoundBack /></Link>
+                <div className={styles.employeeImgContainer}>
+                    <img className={styles.employeeImg} src={`${employee.image}`} alt="Employee" />
                 </div>
-                <div className={styles.productInfo}>
+                <div className={styles.employeeInfo}>
                     <h2>{employee.name}</h2>
                     <p>{employee.position}</p>
                     

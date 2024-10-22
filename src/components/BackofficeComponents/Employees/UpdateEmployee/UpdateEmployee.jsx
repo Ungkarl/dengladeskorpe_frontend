@@ -81,14 +81,14 @@ const UpdateEmployee = () => {
     }
     //Frontend for the update employee form, where i use react hook form for the form handling.
     return (
-        <div className={styles.editProductContainer}>
+        <div className={styles.editEmployeeContainer}>
             <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
                 <Link to="/backoffice/employees" className={styles.backButton}>
                     <IoIosArrowRoundBack />
                 </Link>
                 <label className={`${styles.upd_label} ${styles.imgLabel}`}>
                     Upload Billede
-                    <img className={styles.productImg} src={image} alt="Employee Preview" />
+                    <img className={styles.employeeImg} src={image} alt="Employee Preview" />
                     <input
               type="file"
               {...register("file")}

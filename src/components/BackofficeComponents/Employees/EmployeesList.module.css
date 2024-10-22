@@ -1,4 +1,4 @@
-.product_container {
+.employee_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -9,7 +9,7 @@
     
 }
 
-.product_add_button {
+.employee_add_button {
     z-index: 10;
     cursor: pointer;
     display: flex;
@@ -27,7 +27,7 @@
     }
 }
 
-.search_product_bar {
+.search_employee_bar {
     position: fixed;
     top: 80vh;
     left: 50%;
@@ -48,7 +48,7 @@
     }
 }
 
-.product_list {
+.employee_list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -59,7 +59,7 @@
     margin-bottom: 20vh;
 }
 
-.product_card {
+.employee_card {
     width: 350px;
     min-height: 300px;
     display: flex;
@@ -71,7 +71,7 @@
     background-color: var(--purple);
     border-radius: 10px;
 }
-.product_image {
+.employee_image {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -83,30 +83,23 @@
 }
 
 
-.product_title {
+.employee_title {
     font-size: 25px;
-    color: var(--white);
+    color: var(--black-alternative);
     margin: 0;
 }
 
-.product_description {
+.employee_description {
     font-size: 16px;
-    color: var(--white);
+    color: var(--black-alternative);
     margin: 0;
     text-align: center;
 }
-.product_price {
-    font-size: 20px;
-    color: var(--white);
-   
-}
 
-.product_discount {
-    font-size: 20px;
-    color: var(--white);
-}
 
-.product_actions {
+
+
+.employee_actions {
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -120,7 +113,7 @@
     border: none;
     border-radius: 5px;
     background-color: var(--dark-grey);
-    color: var(--white);
+    color: var(--white-color);
     cursor: pointer;
     transition: 0.3s ease;
     width: 100px;

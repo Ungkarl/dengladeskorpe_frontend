@@ -8,7 +8,7 @@ const DishesList = () => {
     const { dishes } = useFetch();
     const [searchTerm, setSearchTerm] = useState("");
 
-//FILTER TO DO
+
 const filteredDishes = (dishes || []).filter(dish =>
   dish?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
   dish?.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||

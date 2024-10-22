@@ -49,12 +49,7 @@
     transition: 0.3s;
 }
 
-.productImg {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-}
+
 
 .ImgInputHidden {
     display: none;

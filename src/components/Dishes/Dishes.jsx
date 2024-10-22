@@ -91,7 +91,8 @@ const Dishes = () => {
         {currentDishes.map((dish) => ( // Brug currentDishes i stedet for filteredDishes
           <div key={dish._id} className={styles.dish}   onClick={() => handleDishClick(dish._id)}>
             <h3>{dish.title}</h3>
-            <img src={dish.image} alt={dish.name} />
+            <div className={styles.image_container}> <img src={dish.image} alt={dish.name} /></div>
+          
           </div>
         ))}
       </div>

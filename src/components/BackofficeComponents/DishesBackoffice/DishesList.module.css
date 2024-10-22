@@ -41,7 +41,7 @@
     svg {
         width: 50%;
         height: 50%;
-        color: #fff;
+        color: var(--white-color);
     }
 }
 .dish_list {
@@ -81,7 +81,7 @@
 
 .dish_name {
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--white-color);
     margin: 0;
 }
 

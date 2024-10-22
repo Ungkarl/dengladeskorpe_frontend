@@ -20,29 +20,29 @@ const EmployeesList = () => {
     
 
     return (
-        <div className={styles.product_container}>
+        <div className={styles.employee_container}>
             <h1>EMPLOYEES ADMIN</h1>
-            <div className={styles.search_product_bar}>
+            <div className={styles.search_employee_bar}>
                 <input
                     type="text"
-                    placeholder="Search Product"
+                    placeholder="Search Employee"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Link to="/backoffice/employees/add" className={styles.product_add_button}><IoMdAdd /></Link>
+                <Link to="/backoffice/employees/add" className={styles.employee_add_button}><IoMdAdd /></Link>
             </div>
             
-            <div className={styles.product_list}>
+            <div className={styles.employee_list}>
                 {filteredEmployees.map(employee => (
-                    <div key={employee._id} className={styles.product_card}>
-                        <div className={styles.product_image}>
+                    <div key={employee._id} className={styles.employee_card}>
+                        <div className={styles.employee_image}>
                             <img src={employee.image} alt={employee.title} />
                         </div>
-                        <div className={styles.product_title}>{employee.name}</div>
-                        <div className={styles.product_description}>
+                        <div className={styles.employee_title}>{employee.name}</div>
+                        <div className={styles.employee_description}>
                             <p>{employee.position}</p>
                         </div>
-                        <div className={styles.product_actions}>
+                        <div className={styles.employee_actions}>
                             <Link className={styles.edit_link} to={`/backoffice/employees/edit/${employee._id}`}>Edit</Link>
                             <Link className={styles.delete_link} to={`/backoffice/employees/delete/${employee._id}`}>Delete</Link>
                         </div>

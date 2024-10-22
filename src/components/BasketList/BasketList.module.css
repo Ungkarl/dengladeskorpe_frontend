@@ -136,7 +136,7 @@
 
 .success_message {
     z-index: 4;
-    color: black;
+    color: var(--black-alternative);
     font-size: 2rem;
     position: relative;
     background-color: #fcf2e6b7;

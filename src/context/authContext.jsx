@@ -12,7 +12,7 @@ const [auth, saveAuth] = useLocalStorage("auth", {});
 const [user, setUser] = useState({});
 const [role, setRole] = useState("");
 
-const {dishes, categories, employees, messages, users, orders, setEmployees, setMessages, setOrders, setDishes } = useFetch();
+const {setEmployees, setMessages, setOrders, setDishes } = useFetch();
 
 
 
@@ -35,8 +35,9 @@ useEffect(() => {
                     body: JSON.stringify({ token: auth.token })
                 });
                 let result = await response.json();
+                console.log(result);
 
-                if (result.message === "Token Expired") {
+                if (result.status === "error") {
                     saveAuth({});
                 setUser({});
                 navigate('/backoffice/signin');

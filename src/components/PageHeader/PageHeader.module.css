@@ -1,8 +1,7 @@
 .pageHeader {
     height: 50dvh;
     
-    width: 100%;
-    max-width: 1440px;
+    width: 100%;    
    position: relative;
     img {
         width: 100%;

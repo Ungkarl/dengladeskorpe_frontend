@@ -24,7 +24,7 @@ import AddEmployee from './components/BackofficeComponents/Employees/addEmployee
 import DeleteEmployee from './components/BackofficeComponents/Employees/DeleteEmployee/DeleteEmployee.jsx'
 import UpdateEmployee from './components/BackofficeComponents/Employees/UpdateEmployee/UpdateEmployee.jsx'
 
-import MessagesDashboard from './pages/backoffice/reviewsDashboard/ReviewsDashboard.jsx'
+import MessagesDashboard from './pages/backoffice/messagesDashboard/MessagesDashboard.jsx'
 import DeleteMessage from './components/BackofficeComponents/Messages/DeleteMessage/DeleteMessage.jsx'
 import EditMessage from './components/BackofficeComponents/Messages/EditMessage/EditMessage.jsx'
 
@@ -72,7 +72,7 @@ function App() {
       element: <BackofficePage />,
       children: [
         {
-          path: '/backoffice/signin', 
+          path: 'signin', 
           element: <SignInPage />
         },
         {

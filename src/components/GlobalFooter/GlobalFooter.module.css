@@ -6,6 +6,7 @@
     align-items: center;
     padding: 20px;
     flex-direction: column;
+    max-width: 1440px;
     img {
         width: 100px;
         height: auto;
@@ -21,5 +22,13 @@
         font-family: 'Kurale', serif;
         color: var(--white-color);
 
+    }
+}
+
+
+/*80% MAX WITH ON TABLET AND ABOVE*/
+@media (min-width: 768px) {
+    .global_footer {
+        max-width: 80%;
     }
 }

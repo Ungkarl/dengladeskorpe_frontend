@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from './BackofficeNavigation.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 
 
@@ -9,7 +9,9 @@ const BackofficeNavigation = ({ role }) => {
     return (
         <div className={styles.backoffice_nav}>
     <div className={styles.backoffice_navLogo}>
-        LOGO
+        <Link to="/">
+        <img src="/assets/images/logo.png" alt="" />
+        </Link>
     </div>
 
     <div className={styles.backoffice_navLinks}>

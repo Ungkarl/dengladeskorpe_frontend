@@ -15,3 +15,10 @@
 .page-backoffice {
   width: 100%;
 }
+
+/*MAX WIDTH TO 80% ON TABLET AND ABOVE*/
+@media (min-width: 768px) {
+  .page {
+    max-width: 80%;
+  }
+}
