@@ -1,0 +1,25 @@
+.global_footer {
+    background-color: var(--dark-grey);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    img {
+        width: 100px;
+        height: auto;
+        object-fit: cover;
+    }
+    .footer_contact {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        font-family: 'Just Another Hand', cursive;
+        font-family: 'Kurale', serif;
+        color: var(--white-color);
+
+    }
+}

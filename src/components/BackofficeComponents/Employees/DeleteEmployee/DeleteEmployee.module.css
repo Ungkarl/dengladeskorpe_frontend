@@ -1,0 +1,100 @@
+.deleteProductContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--light-beige);
+    font-family: 'Montserrat', sans-serif;
+
+    .product {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 5px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .productImgContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 100%;
+
+            .productImg {
+                
+                height: 150px;
+                width: auto;
+                object-fit: contain;
+                border: 1px solid var(--white-color);
+                
+            }
+        }
+
+        .productInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.deleteConfirmBtn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark-grey);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+
+   
+}
+
+.warning {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white-color);
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.productBackButton {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+
+    svg {
+        width: 50px;
+        height: 50px;
+        color: var(--dark-grey);
+        cursor: pointer;
+        transition: all 0.3s;
+
+}
+}

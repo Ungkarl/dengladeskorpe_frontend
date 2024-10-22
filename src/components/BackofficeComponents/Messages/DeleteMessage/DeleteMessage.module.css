@@ -1,0 +1,85 @@
+.deleteMessageContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:  var(--light-beige);
+
+    .message {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .messageInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark-grey);
+        }
+
+        
+    }
+}
+
+.deleteConfirmBtn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark-grey);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+
+   
+}
+
+.warning {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--dark-grey);
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.messageBackButton {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+
+    svg {
+        width: 50px;
+        height: 50px;
+        color: var(--dark-grey);
+        cursor: pointer;
+        transition: all 0.3s;
+
+    }
+}

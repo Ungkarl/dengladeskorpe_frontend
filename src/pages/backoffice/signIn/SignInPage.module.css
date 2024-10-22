@@ -1,0 +1,115 @@
+.login_container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+   
+}
+
+.login_form {
+    width: 100%;
+    max-width: 400px;
+    padding: 35px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: var(--black-alternative);
+    }
+
+}
+
+
+
+.email_label,
+.password_label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.login_input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    background-color: var(--light-beige);
+    margin-bottom: 5px;
+    outline: none;
+}
+
+
+
+.login_input:focus + .email_label,
+.login_input:focus + .password_label,
+.login_input.not_empty + .email_label,
+.login_input.not_empty + .password_label {
+    top: -20px;
+    left: 5px;
+    font-size: 12px;
+    color: var(--white-color);
+}
+
+.error {
+    border-color: red;
+}
+
+.error_text {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.login_button {
+    background-color: var(--light-beige);
+    color: var(--black-alternative);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.login_button:hover {
+    -webkit-box-shadow:0px 0px 105px 0px rgba(53,86,117,0.9);
+-moz-box-shadow: 0px 0px 105px 0px rgba(53,86,117,0.9);
+box-shadow: 0px 0px 105px 0px rgba(53,86,117,0.9);
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pastel-pink);
+
+    
+}

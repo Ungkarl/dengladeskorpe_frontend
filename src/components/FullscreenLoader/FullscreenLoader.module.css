@@ -1,0 +1,15 @@
+.fullscreen_loader {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    position: fixed;
+    background-color: var(--light-beige);
+    top: 0;
+    left: 0;
+    span {
+        color: var(--black-alternative);
+    }
+}
