@@ -12,6 +12,7 @@ const [auth, saveAuth] = useLocalStorage("auth", {});
 const [user, setUser] = useState({});
 const [role, setRole] = useState("");
 
+//useFetch
 const {setEmployees, setMessages, setOrders, setDishes } = useFetch();
 
 
@@ -19,9 +20,13 @@ const {setEmployees, setMessages, setOrders, setDishes } = useFetch();
 
 const location = useLocation();
 const navigate = useNavigate();
+
+//Check if token exists
 const token = auth.token ? auth.token : "";
 const signedIn = auth.token !== undefined;
 
+
+//Check if user is signed in and if token is valid
 useEffect(() => {
     const checkUser = async () => {
         if (location.pathname.includes("/backoffice")) {
@@ -55,6 +60,7 @@ useEffect(() => {
 }, [location.pathname, auth.token, navigate, saveAuth]);
 
 
+//Sign in function
 const signIn = async (email, password) => {
     let response = await fetch('http://localhost:3042/auth/signin', {
         method: 'POST',
@@ -66,7 +72,7 @@ const signIn = async (email, password) => {
 
     let result = await response.json();
     console.log(result);
-    //Check if token is string or even exists
+    //Check if token is string or even exists, error handling. Else save token and set user.
     if (result.data === undefined || typeof result.data.token !== "string" || result.data.token.trim() === "") {
         return false;
     } else {
@@ -78,10 +84,13 @@ const signIn = async (email, password) => {
     }
 };
 
+
+//Get user function
 const getUser = () => {
     return token !== "" ? jwtDecode(token) : {};
 }
 
+//Sign out function
 const signOut = () => {
     saveAuth({});
     setUser({});
@@ -91,7 +100,6 @@ const signOut = () => {
 
 
 //EMPLOYEE CRUD
-
     const addEmployee = async (formData) => {
         try {
             let response = await fetch("http://localhost:3042/employee", {
@@ -152,6 +160,8 @@ const signOut = () => {
         }    
     };
 
+
+
     //MESSAGES CRUD 
     const deleteMessage = async (id) => {
         try {
@@ -192,7 +202,10 @@ const signOut = () => {
 
     };
 
-    //ORDERS CRUD MINUS ADD
+
+
+
+    //ORDERS CRUD 
     const updateOrder = async (formData) => {
         try {
             let response = await fetch("http://localhost:3042/order", {
@@ -258,7 +271,6 @@ const signOut = () => {
         }
     }
 
-    //UPDATE DISH
     const updateDish = async (formData) => {
         try {
             let response = await fetch("http://localhost:3042/dish", {
@@ -278,7 +290,7 @@ const signOut = () => {
         }
     }
 
-    //DELETE DISH
+
     const deleteDish = async (id) => {
         try {
             let response = await fetch(`http://localhost:3042/dish/${id}`, {
@@ -305,10 +317,10 @@ const signOut = () => {
 
 
 
-
+//All the values that can be used in the context
 const value = { user, setUser, role, signIn, token, signedIn, getUser, setRole, signOut, addEmployee, deleteEmployee, updateEmployee, deleteMessage, updateMessage, updateOrder, deleteOrder, addDish, updateDish, deleteDish };
 
-
+//Return the context provider
 return (
     <AuthContext.Provider value={value}>
         {children}
@@ -317,5 +329,5 @@ return (
 
 }
 
-
+//Export the context and the provider
 export const AuthContext = createContext({});

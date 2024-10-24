@@ -5,7 +5,6 @@ import { useFetch } from "../../hooks/useFetch";
 
 const PageHeader = () => {
     const { dishes } = useFetch();
-    //State for banner title
     const [bannerBottomTitle, setBannerBottomTitle] = useState("SKORPE");
     //Get id from url if its there
     const { id } = useParams();

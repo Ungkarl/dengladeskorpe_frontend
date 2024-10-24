@@ -10,12 +10,15 @@ const DeleteEmployee = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [employee, setEmployee] = useState(null);
-    const [loading, setLoading] = useState(false); // Loading state
+    const [loading, setLoading] = useState(false); 
     const { deleteEmployee } = useOutletContext();
 
+
+
+    //Fetching the employee if employees and id is available
     useEffect(() => {
         const fetchEmployee = async () => {
-            // Simuleret ventetid på 2 sekunder
+            // Simulated waiting time of 2 seconds
             await new Promise((resolve) => setTimeout(resolve, 2000));
             const employee = employees.find(employee => employee._id === id);
             setEmployee(employee);
@@ -23,20 +26,24 @@ const DeleteEmployee = () => {
         fetchEmployee();
     }, [employees, id]);
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        setLoading(true); // Start loading
 
-        // Simuleret ventetid på 2 sekunder
+    //Function to handle the deletion of the employee
+    const handleDelete = async () => {
+
+        setLoading(true); 
+
+        // Simulated waiting time of 2 seconds
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        // Kald deleteUser fra useOutletContext
+        // Call deleteEmployee from useOutletContext
         await deleteEmployee(id);
         navigate('/backoffice/employees');
 
-        setLoading(false); // Stop loading
+        setLoading(false);
     }
 
+
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }

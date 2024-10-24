@@ -16,6 +16,7 @@ const DeleteOrder = () => {
     const { deleteOrder } = useOutletContext();
 
 
+    //Fetching the order if orders and id is available
     useEffect(() => {
         const fetchOrder = async () => { 
             await new Promise(resolve => setTimeout(resolve, 2000));
@@ -28,20 +29,21 @@ const DeleteOrder = () => {
 
 
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        setLoading(true); // Start loading
+    const handleDelete = async () => {
+        setLoading(true);
 
         // Simulated waiting time of 2 seconds
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         // Call deleteUser from useOutletContext
         await deleteOrder(id);
+
         navigate("/backoffice/orders");
-        setLoading(false); // Stop loading
+        setLoading(false);
     };
 
-
+    
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }

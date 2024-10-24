@@ -10,13 +10,19 @@ const Dishes = () => {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const dishesPerPage = 6; // Configure number of dishes per page
+
+  //Number of dishes per page
+  const dishesPerPage = 6;
   const navigate = useNavigate(); 
 
 
   //Filter dishes based on the category chosen & search term
-  const filteredDishes = dishes.filter((dish) => { //dishes.filter is the method to filter.
-    const matchesCategory = currentCategory === null || dish.category === currentCategory; //Show only dishes that match the current category
+  const filteredDishes = dishes.filter((dish) => { 
+
+    //Show dishes that match the current category and search term. If null show all.
+    const matchesCategory = currentCategory === null || dish.category === currentCategory; 
+
+    //Show dishes that match the search term. Title or ingredients.
     const matchesSearchTerm = 
       dish.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
       (Array.isArray(dish.ingredients) ? dish.ingredients.join(",").toLowerCase().includes(searchTerm.toLowerCase()) : false); //Show the dishes that match title or the ingredients, only if ingredients is an array
@@ -32,6 +38,8 @@ const Dishes = () => {
  //User is on page 1, currentPage will be 1. Since Arrays is 0-based, i minus 1, and multiply with dishesPerPage to get the startindex.
  //Page 2, currentPage will be 2. 2-1 = 1. 1*6 = 6. Startindex will be 6.
   const startIndex = (currentPage - 1) * dishesPerPage;
+
+  //startindex + dishesperpage will be the endindex.
   const currentDishes = filteredDishes.slice(startIndex, startIndex + dishesPerPage);
 
   //When search term changes, update the searchTerm and set the currentPage to 1
@@ -52,19 +60,19 @@ const Dishes = () => {
     }
   };
 
-   // Funktion til at navigere til dish-detaljesiden
+   // Function to handle the dish click
    const handleDishClick = (dishId) => {
     navigate(`/dish/${dishId}`);
   };
 
-  // Funktion til at gå til næste side
+  // Function to go to the next page
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Funktion til at gå til forrige side
+  // Function to go to the previous page
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -76,8 +84,6 @@ const Dishes = () => {
       <h2 className={styles.dishes_title}>Vælg kategori</h2>
       <h3 className={styles.dishes_subTitle}>Eller kig igennem alle vores lækre retter</h3>
       <div className={styles.categories}>
-        {/* But class on category if selected */}
-
         {categories.map((category) => (
           <div
   key={category._id}
@@ -99,7 +105,7 @@ const Dishes = () => {
 
       <div className={styles.dishes}>
       
-        {currentDishes.map((dish) => ( // Brug currentDishes i stedet for filteredDishes
+        {currentDishes.map((dish) => ( // Using the currentDishes array to map through
           <div key={dish._id} className={styles.dish}   onClick={() => handleDishClick(dish._id)}>
             <h3>{dish.title}</h3>
             <div className={styles.image_container}> <img src={dish.image} alt={dish.name} /></div>
@@ -108,7 +114,7 @@ const Dishes = () => {
         ))}
       </div>
 
-      {/* Paginering */}
+      {/* Pagination */}
       <div className={styles.pagination}>
         <button onClick={prevPage} disabled={currentPage === 1}>
           Forrige

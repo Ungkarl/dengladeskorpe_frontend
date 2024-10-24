@@ -8,16 +8,18 @@ import FullscreenLoader from "../FullscreenLoader/FullscreenLoader";
 const ContactForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [isLoading, setIsLoading] = useState(false);
-     //State for error message
      const [errorMessage, setErrorMessage] = useState('');
-     //State for success message
      const [showSuccess, setShowSuccess] = useState(false);
 
 
+
+     //Function to post the message
      const postMessage = async (data) => {
         setIsLoading(true);
         setErrorMessage('');
         setShowSuccess(false);
+
+        
         await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate 2 seconds delay
 
         try {
@@ -49,6 +51,7 @@ const ContactForm = () => {
         }
     };
     
+    //Function to close the success message
     const closeSuccess = () => {
         setShowSuccess(false);
 

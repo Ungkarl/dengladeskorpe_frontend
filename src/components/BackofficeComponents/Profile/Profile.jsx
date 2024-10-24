@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 import styles from "./Profile.module.css";
 import { useAuth } from "../../../hooks/useAuth";
 
+
+//Profile component
 const SignedIn = ({user}) => {
     return (
     <>

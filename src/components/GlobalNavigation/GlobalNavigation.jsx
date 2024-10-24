@@ -9,17 +9,18 @@ const GlobalNavigation = () => {
 
     const {basketQuantity} = useBasket();
 
-      //Function for toggling the navigation
+     // Function to toggle the menu
       const toggleMenu = () => {
         setIsOpen(!isOpen);
         
       
     };
 
+    // Function to close the menu
     const closeMenu = () => {
         setIsOpen(false);
     }
-    //Frontend for the global navigation
+
 
     return (
         <>

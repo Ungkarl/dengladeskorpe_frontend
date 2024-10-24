@@ -1,6 +1,7 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
+/* eslint-disable react/prop-types */
+
 import { createContext, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+
 
 
 
@@ -14,6 +15,7 @@ export const FetchContextProvider = ({ children }) => {
     const [orders, setOrders] = useState([]);
 
 
+    //Fetching categories
     useEffect(() => {
         const fetchCategories = async () => {
             let response = await fetch("http://localhost:3042/categories", {
@@ -32,7 +34,7 @@ export const FetchContextProvider = ({ children }) => {
     }, []);
 
 
-
+    //Fetching dishes
     useEffect(() => {
         const fetchDishes = async () => {
             let response = await fetch("http://localhost:3042/dishes", {
@@ -51,7 +53,7 @@ export const FetchContextProvider = ({ children }) => {
 
     }, []);
 
-
+    //Fetching employees
     useEffect(() => {
         const fetchEmployees = async () => {
             let response = await fetch("http://localhost:3042/employees", {
@@ -70,6 +72,7 @@ export const FetchContextProvider = ({ children }) => {
     }, []);
 
 
+    //Fetching messages
     useEffect(() => {
         const fetchMessages = async () => {
             let response = await fetch("http://localhost:3042/messages", {
@@ -87,6 +90,8 @@ export const FetchContextProvider = ({ children }) => {
 
     }, []);
 
+
+    //Fetching users
     useEffect(() => {
         const fetchUsers = async () => {
             let response = await fetch("http://localhost:3042/users", {
@@ -104,6 +109,8 @@ export const FetchContextProvider = ({ children }) => {
 
     }, []);
 
+
+    //Fetching orders
     useEffect(() => {
         const fetchOrders = async () => {
             let response = await fetch("http://localhost:3042/orders", {
@@ -121,7 +128,7 @@ export const FetchContextProvider = ({ children }) => {
 
     }, []);
 
-    //Messages fetch
+    //Fetching messages
     useEffect(() => {
         const fetchMessages = async () => {
             let response = await fetch("http://localhost:3042/messages", {
@@ -139,9 +146,11 @@ export const FetchContextProvider = ({ children }) => {
   
 
     
-
+    //Object with all the values
     const value = { dishes, categories, employees, messages, users, orders, setEmployees, setMessages, setUsers, setOrders, setDishes, setCategories };
 
+
+    //Return the provider with the value object
     return (
         <FetchContext.Provider value={value}>
             {children}

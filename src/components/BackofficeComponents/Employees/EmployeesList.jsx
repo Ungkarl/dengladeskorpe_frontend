@@ -11,7 +11,7 @@ const EmployeesList = () => {
    
     const [searchTerm, setSearchTerm] = useState("");
 
-
+    //Filtering based on search term. Employee name.
     const filteredEmployees = (employees || []).filter(employee =>
         employee?.name?.toLowerCase().includes(searchTerm.toLowerCase())
     );

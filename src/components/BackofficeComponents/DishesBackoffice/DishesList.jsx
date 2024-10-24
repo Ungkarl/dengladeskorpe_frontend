@@ -8,7 +8,7 @@ const DishesList = () => {
     const { dishes } = useFetch();
     const [searchTerm, setSearchTerm] = useState("");
 
-
+//Filtering based on search term. Title, category and ingredients are checked.
 const filteredDishes = (dishes || []).filter(dish =>
   dish?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
   dish?.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -26,19 +26,20 @@ return (
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {/*ADD BUTTON*/}
       <Link to="/backoffice/dishes/add" className={styles.dish_add_button}>
         <IoMdAdd />
       </Link>
     </div>
 
     <div className={styles.dish_list}>
+      
       {filteredDishes.map((dish) => (
         <div key={dish._id} className={styles.dish_card}>
           <div className={styles.dish_image}>
             <img src={dish.image} alt={dish.title} />
           </div>
           <div className={styles.dish_name}>{dish.title}</div>
+
           <div className={styles.dish_description}>
             {dish.ingredients.map((ingredient, index) => (
               <div key={index}>{ingredient}</div>

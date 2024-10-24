@@ -3,14 +3,14 @@ import { useLocation, useRoutes } from 'react-router-dom'
 import './App.css'
 
 
-
+//Navigation and footer
 import GlobalNavigation from './components/GlobalNavigation/GlobalNavigation'
 import GlobalFooter from './components/GlobalFooter/GlobalFooter'
 
 
 
 
-
+//Pages
 import Frontpage from './pages/frontpage/Frontpage'
 import EmployeesPage from './pages/employees/EmployeesPage'
 import DishPage from './pages/dish/DishPage'
@@ -18,7 +18,11 @@ import BasketPage from './pages/basketPage/BasketPage'
 import ContactPage from './pages/contact/ContactPage'
 import BackofficePage from './pages/backoffice/BackofficePage'
 import SignInPage from './pages/backoffice/signIn/SignInPage.jsx'
+
+
+//Outlets
 import Dashboard from './pages/backoffice/dashboard/Dashboard.jsx'
+
 import EmployeesDashboard from './pages/backoffice/employeesDashboard/employeesDashboard.jsx'
 import AddEmployee from './components/BackofficeComponents/Employees/addEmployee/AddEmployee.jsx'
 import DeleteEmployee from './components/BackofficeComponents/Employees/DeleteEmployee/DeleteEmployee.jsx'
@@ -28,17 +32,16 @@ import MessagesDashboard from './pages/backoffice/messagesDashboard/MessagesDash
 import DeleteMessage from './components/BackofficeComponents/Messages/DeleteMessage/DeleteMessage.jsx'
 import EditMessage from './components/BackofficeComponents/Messages/EditMessage/EditMessage.jsx'
 
-
 import DishesDashboard from './pages/backoffice/dishesDashboard/DishesDashboard.jsx'
 import AddDish from './components/BackofficeComponents/DishesBackoffice/AddDish/AddDish.jsx'
 import UpdateDish from './components/BackofficeComponents/DishesBackoffice/UpdateDish/UpdateDish.jsx'
 import DeleteDish from './components/BackofficeComponents/DishesBackoffice/DeleteDish/DeleteDish.jsx'
 
-
-
 import OrdersDashboard from './pages/backoffice/ordersDashboard/OrdersDashboard.jsx'
 import EditOrder from './components/BackofficeComponents/Orders/EditOrder/EditOrder.jsx'
 import DeleteOrder from './components/BackofficeComponents/Orders/DeleteOrder/DeleteOrder.jsx'
+
+
 import { useEffect } from 'react'
 
 function App() {
@@ -57,7 +60,7 @@ function App() {
       element: <Frontpage />
     },
     {
-      path: '/dish/:id', // Sørg for korrekt dynamisk parameter
+      path: '/dish/:id', 
       element: <DishPage />
     },
     {

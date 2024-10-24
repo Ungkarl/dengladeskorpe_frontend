@@ -17,7 +17,7 @@ const EditOrder = () => {
     const { updateOrder } = useOutletContext();
     const { register, handleSubmit } = useForm();
 
-
+//Fetching the order if orders and id is available
 useEffect(() => {
     const fetchOrder = async () => {
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -28,9 +28,9 @@ useEffect(() => {
     fetchOrder();
 }, [orders, id]);
 
-
+//Function to handle the update of the order
 const handleUpdate = async (data) => {
-    setLoading(true); // Start loading
+    setLoading(true); 
 
     // Simulated waiting time of 2 seconds
     const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
@@ -40,14 +40,18 @@ const handleUpdate = async (data) => {
     formData.append("shipped", data.status);
 
     const updateOrderResult = updateOrder(formData);
+
+    //Wiating for both promises to resolve
     await Promise.all([minLoadingTime, updateOrderResult]);
 
-    setLoading(false); // Stop loading
+    setLoading(false);
     navigate("/backoffice/orders");
 
 
 };
 
+
+//Loading screens
 if (loading) {
     return <FullscreenLoader />;
 }

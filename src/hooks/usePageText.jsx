@@ -4,6 +4,8 @@ const usePageText = (pathname) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
 
+
+  //Update title and text based on the current pathname
   useEffect(() => {
     switch (pathname) {
       case "/":
@@ -31,7 +33,7 @@ const usePageText = (pathname) => {
     }
   }, [pathname]);
 
-  // Returner begge værdier som et objekt
+  //Return the title and text for the current page
   return { title, text };
 };
 

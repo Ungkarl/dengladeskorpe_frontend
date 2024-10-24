@@ -17,6 +17,7 @@ const EditMessage = () => {
     const { register, handleSubmit } = useForm();
 
 
+    //Fetching the message if messages and id is available
     useEffect(() => {
         const fetchMessage = async () => {
             await new Promise(resolve => setTimeout(resolve, 2000));
@@ -28,24 +29,27 @@ const EditMessage = () => {
     }, [messages, id]);
 
 
+    //Function to handle the update of the message
     const handleUpdate = async (data) => {
-        setLoading(true); // Start loading
+        setLoading(true); 
 
-        // Simuleret ventetid på 2 sekunder
+        // Simulated waiting time of 2 seconds
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
 
        let formData = new FormData();
          formData.append("name", message.name);
          formData.append("subject", message.subject);
          formData.append("description", message.description);
-         //STATUS IS EITHER FALSE OR TRUE
+         //status is a boolean value, meaning true is checked and false is unchecked
         formData.append("status", data.status);
         formData.append('id', id);
 
         const updateMessageResult = updateMessage(formData);
+
+        //Wiating for both promises to resolve
         await Promise.all([minLoadingTime, updateMessageResult]);
 
-        setLoading(false); // Stop loading
+        setLoading(false); 
         navigate("/backoffice/messages");
 
 
@@ -53,7 +57,8 @@ const EditMessage = () => {
 
     };
 
-
+    
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }

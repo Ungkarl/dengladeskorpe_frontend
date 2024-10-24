@@ -7,11 +7,9 @@ import FullscreenLoader from "../../../FullscreenLoader/FullscreenLoader";
 
 const AddEmployee = () => {
     const navigate = useNavigate();
-    //useOutletContext, is where the addProduct function is stored from the parent component.
     const { addEmployee } = useOutletContext();
-    //React hook form, to handle the form data.
     const { register, handleSubmit } = useForm();
-    const [loading, setLoading] = useState(false); // Loading state
+    const [loading, setLoading] = useState(false); 
     const [image, setImage] = useState('/vite.svg');
 
 
@@ -22,30 +20,28 @@ const AddEmployee = () => {
         console.log(e.target.files[0]);
     };
 
-    //Function to handle the form submit, and add the employee to my backend using the addEmployee function from the parent component.
+    //Function to handle the form submit.
     const onSubmit = async (data) => {
-        console.log(data);
-        //Simulated loading
         setLoading(true);
 
         //Minimum loading time of 2 seconds
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
-        //Formdata to append the file and the rest of the data.
+        //Formdata to send to the backend
         let formData = new FormData();
         formData.append('file', data.file[0]);
         formData.append("name", data.name);
         formData.append("position", data.description);
 
-        //Employee add result
+        
         const addEmployeeResult = await addEmployee(formData);
-        //Await the result AND the minimum loading time, until the loader should be false.
+        ///Waiting for both promises to resolve
         await Promise.all([addEmployeeResult, minLoadingTime]);
 
         setLoading(false);
-        //Navigate back to employees
         navigate("/backoffice/employees");
     }; 
-    //If loading, return a loading spinner.
+    
+    //Loading screen
     if (loading) {
         return <FullscreenLoader />;
     }

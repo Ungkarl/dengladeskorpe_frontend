@@ -17,6 +17,7 @@ const DeleteMessage = () => {
     const { deleteMessage } = useOutletContext();
 
 
+    //Fetching the message if messages and id is available
     useEffect(() => {
         const fetchMessage = async () => { 
             await new Promise(resolve => setTimeout(resolve, 2000));
@@ -28,20 +29,22 @@ const DeleteMessage = () => {
     }, [messages, id]);
 
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        setLoading(true); // Start loading
+    //Function to handle the deletion of the message
+    const handleDelete = async () => {
+    
+        setLoading(true); 
 
-        // Simuleret ventetid på 2 sekunder
+        // Simulated waiting time of 2 seconds
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        // Kald deleteUser fra useOutletContext
+        // Call deleteMessage from useOutletContext
         await deleteMessage(id);
         navigate("/backoffice/messages");
-        setLoading(false); // Stop loading
+        setLoading(false);
     };
 
 
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }

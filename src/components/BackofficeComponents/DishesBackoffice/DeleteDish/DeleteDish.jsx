@@ -11,14 +11,16 @@ const DeleteDish = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [dish, setDish] = useState(null);
-    const [loading, setLoading] = useState(false); // Loading state
+    const [loading, setLoading] = useState(false); 
     const { deleteDish } = useOutletContext();
 
     useEffect(() => {
         const fetchDish = async () => {
-            // Simuleret ventetid på 2 sekunder
+            // Simulated waiting time of 2 seconds
             await new Promise((resolve) => setTimeout(resolve, 2000));
+            //Finds the dish with the id
             const dish = dishes.find(dish => dish._id === id);
+            // Sets the dish
             setDish(dish);
         }
         fetchDish();
@@ -26,8 +28,7 @@ const DeleteDish = () => {
     }, [dishes, id]);
 
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
+    const handleDelete = async () => {
         setLoading(true); // Start loading
 
         // Simuleret ventetid på 2 sekunder
@@ -40,7 +41,7 @@ const DeleteDish = () => {
         setLoading(false); // Stop loading
     }
 
-
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }

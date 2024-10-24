@@ -10,37 +10,26 @@ import FullscreenLoader from "../../../FullscreenLoader/FullscreenLoader";
 const UpdateEmployee = () => {
     const { employees } = useFetch();
     const navigate = useNavigate();
-    //Get the id from the URL
     const { id } = useParams();
-    //State for the product from ID
     const [employee, setEmployee] = useState(null);
-    //State for loading
     const [loading, setLoading] = useState(false);
-    //outlet context, where the updateProduct function is from the parent component
     const { updateEmployee } = useOutletContext();
-    //State for the image
     const [image, setImage] = useState('/vite.svg');
-    //React hook form
     const { register, handleSubmit, setValue } = useForm();
 
-    //Function for changing the image
+    //Function for changing the image 
     const onImageChange = (e) => {
         let image = e.target.files[0];
         console.log(image);
         let objectUrl = window.URL.createObjectURL(e.target.files[0]);
         setImage(objectUrl);
-        setValue("file", image);
+        setValue("file", image); //Setting the file to the form data
        
     };
-    //Function for submitting the updated employee, where the loading is set to true, 
-    //to simulate a loading time for a minimum time. Afterwards, i wait for both the minimum loading time and the updateEmployee
-    //function to finish, to then set the loading to false and navigate to the 'employees page in the backoffice.
+    
+
+    //Submit function using formData.
     const onSubmit = async (data) => {
-        console.log(data);
-        if (!data.file || data.file.length === 0) {
-            console.log(data)
-            return;
-        }
         setLoading(true);
 
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
@@ -53,13 +42,15 @@ const UpdateEmployee = () => {
 
        
         const updateEmployeeResult = updateEmployee(formData);
-
+        //Wiating for both promises to resolve
         await Promise.all([minLoadingTime, updateEmployeeResult]);
 
         setLoading(false);
         navigate('/backoffice/employees');
     };
-    //UseEffect for fetching the Employee from the employees array, where the id matches the id from the URL.
+   
+
+    //Fetching the employee if employees and id is available
     useEffect(() => {
         const fetchEmployee = async () => {
             await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -71,7 +62,7 @@ const UpdateEmployee = () => {
     }, [employees, id]);
 
 
-    //If loading is true, i return a loading spinner, if the employee is null, it loads while fetching it.
+    //Loading screens
     if (loading) { 
         return <FullscreenLoader />;
     }
@@ -79,7 +70,9 @@ const UpdateEmployee = () => {
     if (!employee) {
      return <FullscreenLoader />;
     }
-    //Frontend for the update employee form, where i use react hook form for the form handling.
+    
+
+    
     return (
         <div className={styles.editEmployeeContainer}>
             <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>

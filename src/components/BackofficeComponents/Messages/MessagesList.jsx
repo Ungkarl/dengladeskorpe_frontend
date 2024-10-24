@@ -10,7 +10,7 @@ const MessagesList = () => {
 
 
 
-
+    //Filtering based on search term. Name, description and subject are checked.
     const filteredMessages = (messages || []).filter(message => 
         message?.name?.toLowerCase().includes(searchTerm.toLowerCase()) || 
         message?.description?.toLowerCase().includes(searchTerm.toLowerCase()) || 

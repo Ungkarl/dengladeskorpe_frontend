@@ -16,6 +16,8 @@ const AddDish = () => {
     const [chosenCategory, setChosenCategory] = useState('Pizzaer');
 
 
+
+    //Function for changing the image
     const onImageChange = (e) => {
         let objectUrl = window.URL.createObjectURL(e.target.files[0]);
         setImage(objectUrl);
@@ -23,7 +25,7 @@ const AddDish = () => {
 
 
 
-
+    //Submit function using formData.
     const onSubmit = async (data) => {
         console.log(data);
         if (!data.file || data.file.length === 0) {
@@ -44,7 +46,7 @@ const AddDish = () => {
             family: data.priceFamily
         }));
     
-        // Ingredients: converting array to a JSON string
+        // Ingredients: split by comma and trim each ingredient
         const ingredientsArray = data.ingredients.split(',').map(ingredient => ingredient.trim());
         formData.append('ingredients', ingredientsArray);
     
@@ -57,6 +59,7 @@ const AddDish = () => {
         navigate("/backoffice/dishes");
     };
 
+    //Loading screens
     if (loading) {
         return <FullscreenLoader />;
     }
@@ -85,6 +88,7 @@ const AddDish = () => {
                 {...register("file")}
                 onChange={onImageChange}
                 className={`${styles.add_input} ${styles.ImgInputHidden}`}
+                required
               />
             </label>
       
@@ -95,6 +99,7 @@ const AddDish = () => {
                 {...register("title")}
                 placeholder="Indtast titel"
                 className={styles.add_input}
+                required
               />
             </label>
       
@@ -105,6 +110,7 @@ const AddDish = () => {
                 {...register("priceNormal")}
                 placeholder="Normal pris"
                 className={styles.add_input}
+                required
               />
             </label>
       
@@ -116,6 +122,7 @@ const AddDish = () => {
       {...register("priceFamily")}
       placeholder="Familie pris"
       className={styles.add_input}
+      required={chosenCategory === "Pizzaer"}
     />
   </label>
 )}
@@ -141,16 +148,7 @@ const AddDish = () => {
               </select>
             </label>
 
-                
-            {/* <label className={styles.add_label}>
-              Category
-              <input
-                type="text"
-                {...register("category")}
-                placeholder="Indtast kategori"
-                className={styles.add_input}
-              />
-            </label> */}
+          
       
             <label className={styles.add_label}>
               Description
@@ -159,6 +157,7 @@ const AddDish = () => {
                 {...register("description")}
                 placeholder="Indtast beskrivelse"
                 className={styles.add_input}
+                required
               />
             </label>
       

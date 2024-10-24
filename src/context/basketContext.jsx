@@ -9,6 +9,8 @@ const [basket, setBasket] = useLocalStorage("basket", []);
 const [basketTotal, setTotalPrice] = useState(0);
 const [basketQuantity, setTotalQuantity] = useState(0);
 
+
+// Function to calculate the total price and quantity of the basket
 const calculateTotals = (basket) => {
     const total = basket.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const quantity = basket.reduce((acc, item) => acc + item.quantity, 0);
@@ -16,10 +18,13 @@ const calculateTotals = (basket) => {
     setTotalQuantity(quantity);
 };
 
+// Calculate totals when basket changes
 useEffect(() => {
     calculateTotals(basket);
 }, [basket]);
 
+
+// Function to add a product to the basket
 const addToBasket = (product) => {
     const existingProduct = basket.find(item => item._id === product.dish && item.size === product.size);
     let newBasket;
@@ -39,7 +44,7 @@ const addToBasket = (product) => {
     calculateTotals(newBasket);
 };
 
-
+// Function to place an order
 const placeOrder = async (order) => {
     let response = await fetch("http://localhost:3042/order", {
         method: "POST",
@@ -54,9 +59,11 @@ const placeOrder = async (order) => {
     return result;
 };
 
+// Value object for the context
 const value = { basket, basketTotal, basketQuantity, addToBasket, placeOrder, setBasket, setTotalPrice, setTotalQuantity };
 
 
+// Return the provider with the value object
 return (
     <BasketContext.Provider value={value}>
         {children}

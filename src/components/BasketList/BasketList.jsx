@@ -12,9 +12,12 @@ const BasketList = () => {
     const navigate = useNavigate();
 
 
+
+    //Function to handle the order placement
     const onOrderPlace = async () => {
         setIsLoading(true); 
     
+        //Order object
         const order = {
             dishes: basket.map(item => ({
                 dish: item.dish,
@@ -26,22 +29,24 @@ const BasketList = () => {
             totalPrice: basketTotal,
         };
     
-        // Tjek om kurven er tom
+        // Check if order is empty
         if (order.dishes.length === 0) {
             setIsLoading(false);
             return;
         }
     
-        // Fake loading
+        // Simulated waiting time of 2.5 seconds
         await new Promise((resolve) => setTimeout(resolve, 2500));
     
         const placeOrderResult = await placeOrder(order);
         setTimeout(() => {
             navigate("/");
-        }, 5000);  // Viderestil til forsiden efter 5 sekunder
-        console.log(placeOrderResult);
-        setIsLoading(false); // Sæt loading til false, når bestilling er færdig
+        }, 5000);  // Redirect to frontpage after 5 seconds
+       
+
+        setIsLoading(false);
     
+        // If order is placed successfully, set orderStatus to true and clear the basket
         if (placeOrderResult.status === 'ok') {
             setOrderStatus(true);
             setBasket([]);     
@@ -56,7 +61,7 @@ const BasketList = () => {
 return (
     <div className={styles.basket_container}>
         {isLoading ? (
-            <FullscreenLoader /> // Vis loader, mens ordren behandles
+            <FullscreenLoader /> // Loading screen
         ) : orderStatus ? (
             <div className={styles.order_success}>
                 <img src="/assets/images/pineapple.png" alt="" />

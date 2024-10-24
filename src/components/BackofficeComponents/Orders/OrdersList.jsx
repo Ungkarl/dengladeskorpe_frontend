@@ -10,7 +10,7 @@ const OrdersList = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
 
-    //FILTER BY FALSE OR TRUE. THE SEARCH TERM WILL BE STRING.
+    //Converts the shipped value to a string and checks if it includes the search term. True or false.
     const filteredOrders = (orders || []).filter(order => {
         return String(order?.shipped).toLowerCase().includes(searchTerm.toLowerCase())
     })

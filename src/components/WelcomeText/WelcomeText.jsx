@@ -3,10 +3,9 @@ import { useLocation } from "react-router-dom";
 import usePageText from "../../hooks/usePageText";
 
 const WelcomeText = () => {
-  // Få adgang til den aktuelle route
   const location = useLocation();
 
-  // Brug custom hook til at få den passende tekst og titel baseret på pathname
+  // Get the title and text for the current page using the usePageText hook
   const { title, text } = usePageText(location.pathname);
 
   return (

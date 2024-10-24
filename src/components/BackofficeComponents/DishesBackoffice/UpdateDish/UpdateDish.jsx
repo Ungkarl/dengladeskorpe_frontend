@@ -23,19 +23,14 @@ const UpdateDish = () => {
      //Function for changing the image
      const onImageChange = (e) => {
         let image = e.target.files[0];
-        console.log(image);
         let objectUrl = window.URL.createObjectURL(e.target.files[0]);
         setImage(objectUrl);
         setValue("file", image);
        
     };
-
+    
+    //Submit function using formData.
     const onSubmit = async (data) => {
-        console.log(data);
-        if (!data.file || data.file.length === 0) {
-            console.log(data)
-            return;
-        }
         setLoading(true);
 
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
@@ -54,14 +49,14 @@ const UpdateDish = () => {
 
        
         const updateDishResult = updateDish(formData);
-
+        //Wiating for both promises to resolve
         await Promise.all([minLoadingTime, updateDishResult]);
 
         setLoading(false);
         navigate('/backoffice/dishes');
     };
 
-
+    //Fetching the dish if dishes and id is available
     useEffect(() => {
         const fetchDish = async () => {
             await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -74,7 +69,7 @@ const UpdateDish = () => {
         fetchDish();
     }, [dishes, id]);
     
-
+    //Loading screens
     if (loading) { 
         return <FullscreenLoader />;
     }
