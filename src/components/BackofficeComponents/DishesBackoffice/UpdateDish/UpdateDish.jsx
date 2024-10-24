@@ -84,96 +84,94 @@ const UpdateDish = () => {
     }
 
     return (
-        <div className={styles.updateDishContainer}>
-            <div className={styles.outerFormContainer}>
-            <Link to="/backoffice/dishes" className={styles.backButton}>
-                    <IoIosArrowRoundBack />
-                </Link>
-            <form
-                className={styles.formContainer}
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                 
-                <label className={`${styles.upd_label} ${styles.imgLabel}`}>
-                    Upload Billede
-                    <img className={styles.dishImg} src={image} alt="Dish Preview" />
-                    <input
-              type="file"
-              {...register("file")}
-              onChange={onImageChange}
-              className={`${styles.add_input} ${styles.imgInputHidden}`}
-            />
+      <div className={styles.updateDishContainer}>
+        <div className={styles.outerFormContainer}>
+          <Link to="/backoffice/dishes" className={styles.backButton}>
+            <IoIosArrowRoundBack />
+          </Link>
+          <form
+            className={styles.formContainer}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <label className={`${styles.upd_label} ${styles.imgLabel}`}>
+              Upload Billede
+              <img className={styles.dishImg} src={image} alt="Dish Preview" />
+              <input
+                type="file"
+                {...register("file")}
+                onChange={onImageChange}
+                className={`${styles.add_input} ${styles.imgInputHidden}`}
+              />
+            </label>
 
-                </label>
-               
-                    <label htmlFor="title" className={styles.upd_label}>Title
-                    <input
-                    className={styles.upd_input}
-                        type="text"
-                        name="title"
-                        defaultValue={dish.title}
-                        {...register("title")}
-                    />
-                    </label>
-             
-               
-                    <label htmlFor="priceNormal" className={styles.upd_label}>Price normal
-                    <input
-                    className={styles.upd_input}
-                        type="number"
-                        name="priceNormal"
-                        defaultValue={dish.price.normal}
-                        {...register("priceNormal")}
-                    />
-                    </label>
-               
-               
-                    {chosenCategory === "Pizzaer" && (
-  <label className={styles.upd_label}>
-    Family Price
-    <input
-      type="number"
-      {...register("priceFamily")}
-      placeholder="Familie pris"
-      className={styles.upd_input}
-      required={chosenCategory === "Pizzaer"}
-      defaultValue={dish.price.family}
-    />
-  </label>
-)}
-               
-            
-                    <label htmlFor="ingredients" className={styles.upd_label}>Ingredients
-                    <input
-                    className={styles.upd_input}
-                        type="text"
-                        name="ingredients"
-                        defaultValue={dish.ingredients.join(', ')}
-                        {...register("ingredients")}
-                    />
-                    </label>
-           
-                    <label htmlFor="category" className={styles.upd_label}>Category
-                    <select {...register("category")} className={styles.add_input} onChange={(e) => setChosenCategory(e.target.value)}>
+            <label htmlFor="title" className={styles.upd_label}>
+              Title
+              <input
+                className={styles.upd_input}
+                type="text"
+                name="title"
+                defaultValue={dish.title}
+                {...register("title")}
+              />
+            </label>
+
+            <label htmlFor="priceNormal" className={styles.upd_label}>
+              Price normal
+              <input
+                className={styles.upd_input}
+                type="number"
+                name="priceNormal"
+                defaultValue={dish.price.normal}
+                {...register("priceNormal")}
+              />
+            </label>
+
+            {chosenCategory === "Pizzaer" && (
+              <label className={styles.upd_label}>
+                Family Price
+                <input
+                  type="number"
+                  {...register("priceFamily")}
+                  placeholder="Familie pris"
+                  className={styles.upd_input}
+                  required={chosenCategory === "Pizzaer"}
+                  defaultValue={dish.price.family}
+                />
+              </label>
+            )}
+
+            <label htmlFor="ingredients" className={styles.upd_label}>
+              Ingredients
+              <input
+                className={styles.upd_input}
+                type="text"
+                name="ingredients"
+                defaultValue={dish.ingredients.join(", ")}
+                {...register("ingredients")}
+              />
+            </label>
+
+            <label htmlFor="category" className={styles.upd_label}>
+              Category
+              <select
+                {...register("category")}
+                className={styles.add_input}
+                onChange={(e) => setChosenCategory(e.target.value)}
+              >
                 {categories.map((category) => (
                   <option key={category._id} value={category.name}>
                     {category.name}
                   </option>
                 ))}
               </select>
-                    </label>
-             
-                <button
-                    type="submit"
-                    className={styles.updateConfirmBtn}
-                >
-                    Update Dish
-                </button>
-            </form>
+            </label>
 
-            </div>
-            
+            <button type="submit" className={styles.updateConfirmBtn}>
+              Update Dish
+            </button>
+          </form>
         </div>
+      </div>
     );
     
 
