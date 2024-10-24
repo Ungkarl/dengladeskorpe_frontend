@@ -87,6 +87,17 @@
     margin-bottom: 5px;
     position: relative;
     width: 100%;
+
+    select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        color: var(--dark-grey);
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
 }
 
 .imgLabel {

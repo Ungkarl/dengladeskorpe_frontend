@@ -115,17 +115,17 @@ const AddDish = () => {
             </label>
       
             {chosenCategory === "Pizzaer" && (
-  <label className={styles.add_label}>
-    Family Price
-    <input
-      type="number"
-      {...register("priceFamily")}
-      placeholder="Familie pris"
-      className={styles.add_input}
-      required={chosenCategory === "Pizzaer"}
-    />
-  </label>
-)}
+            <label className={styles.add_label}>
+              Family Price
+              <input
+                type="number"
+                {...register("priceFamily")}
+                placeholder="Familie pris"
+                className={styles.add_input}
+                required={chosenCategory === "Pizzaer"}
+              />
+            </label>
+            )}
       
             <label className={styles.add_label}>
               Ingredients (separate with commas)

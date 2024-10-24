@@ -10,7 +10,7 @@ import FullscreenLoader from "../../../FullscreenLoader/FullscreenLoader";
 
 
 const UpdateDish = () => {
-    const { dishes } = useFetch();
+    const { dishes, categories } = useFetch();
     const navigate = useNavigate();
     const { id } = useParams();
     const [dish, setDish] = useState(null);
@@ -18,7 +18,10 @@ const UpdateDish = () => {
     const { updateDish } = useOutletContext();
     const [image, setImage] = useState('/vite.svg');
     const { register, handleSubmit, setValue } = useForm();
+    const [chosenCategory, setChosenCategory] = useState(null);
 
+
+    
 
      //Function for changing the image
      const onImageChange = (e) => {
@@ -38,13 +41,14 @@ const UpdateDish = () => {
         let formData = new FormData();
         formData.append('file', data.file);
         formData.append("title", data.title);
-        formData.append("price", JSON.stringify({
+        const price = {
             normal: data.priceNormal,
-            family: data.priceFamily
-        }));
+            family: chosenCategory === "Pizzaer" ? data.priceFamily : null
+        };
+        formData.append("price", JSON.stringify(price));
         const ingredientsArray = data.ingredients.split(',').map(ingredient => ingredient.trim());
         formData.append('ingredients', ingredientsArray);
-        formData.append('category', data.category);
+        formData.append('category', chosenCategory);
         formData.append('id', id);
 
        
@@ -63,6 +67,7 @@ const UpdateDish = () => {
             const dish = dishes.find(dish => dish._id === id);
             console.log(dish)
             setDish(dish);
+            setChosenCategory(dish.category);
             setImage(`${dish.image}`);
             
         }
@@ -123,15 +128,19 @@ const UpdateDish = () => {
                     </label>
                
                
-                    <label htmlFor="priceFamily" className={styles.upd_label}>Price family
-                    <input
-                    className={styles.upd_input}
-                        type="number"
-                        name="priceFamily"
-                        defaultValue={dish.price.family}
-                        {...register("priceFamily")}
-                    />
-                    </label>
+                    {chosenCategory === "Pizzaer" && (
+  <label className={styles.upd_label}>
+    Family Price
+    <input
+      type="number"
+      {...register("priceFamily")}
+      placeholder="Familie pris"
+      className={styles.upd_input}
+      required={chosenCategory === "Pizzaer"}
+      defaultValue={dish.price.family}
+    />
+  </label>
+)}
                
             
                     <label htmlFor="ingredients" className={styles.upd_label}>Ingredients
@@ -145,13 +154,13 @@ const UpdateDish = () => {
                     </label>
            
                     <label htmlFor="category" className={styles.upd_label}>Category
-                    <input
-                    className={styles.upd_input}
-                        type="text"
-                        name="category"
-                        defaultValue={dish.category}
-                        {...register("category")}
-                    />
+                    <select {...register("category")} className={styles.add_input} onChange={(e) => setChosenCategory(e.target.value)}>
+                {categories.map((category) => (
+                  <option key={category._id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
                     </label>
              
                 <button
