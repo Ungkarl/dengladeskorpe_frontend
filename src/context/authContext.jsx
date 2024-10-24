@@ -213,6 +213,29 @@ const signOut = () => {
         }
     };
 
+    const deleteOrder = async (id) => {
+        try {
+            let response = await fetch(`http://localhost:3042/order/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            setOrders(prevOrders => prevOrders.filter(order => order._id !== id));
+        }
+        catch (error) {
+            console.error('Failed to delete order.', error);
+        }
+
+
+
+
+    };
+
     //DISHES CRUD
     const addDish = async (formData) => {
         try {
@@ -255,13 +278,35 @@ const signOut = () => {
         }
     }
 
+    //DELETE DISH
+    const deleteDish = async (id) => {
+        try {
+            let response = await fetch(`http://localhost:3042/dish/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            setDishes(prevDishes => prevDishes.filter(dish => dish._id !== id));
+        } catch (error) {
+            console.error('Failed to delete dish.', error);
+        }
+    }
+
+
+ 
+
     
 
 
 
 
 
-const value = { user, setUser, role, signIn, token, signedIn, getUser, setRole, signOut, addEmployee, deleteEmployee, updateEmployee, deleteMessage, updateMessage, updateOrder, addDish, updateDish };
+const value = { user, setUser, role, signIn, token, signedIn, getUser, setRole, signOut, addEmployee, deleteEmployee, updateEmployee, deleteMessage, updateMessage, updateOrder, deleteOrder, addDish, updateDish, deleteDish };
 
 
 return (

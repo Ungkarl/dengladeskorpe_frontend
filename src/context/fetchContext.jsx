@@ -106,7 +106,7 @@ export const FetchContextProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            let response = await fetch("http://localhost:3042/messages", {
+            let response = await fetch("http://localhost:3042/orders", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

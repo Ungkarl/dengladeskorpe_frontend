@@ -4,20 +4,24 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import FullscreenLoader from "../../../FullscreenLoader/FullscreenLoader";
-
+import { useFetch } from "../../../../hooks/useFetch";
 
 const AddDish = () => {
     const navigate = useNavigate();
+    const { categories } = useFetch();
     const { addDish } = useOutletContext();
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState('/vite.svg');
+    const [chosenCategory, setChosenCategory] = useState('Pizzaer');
 
 
     const onImageChange = (e) => {
         let objectUrl = window.URL.createObjectURL(e.target.files[0]);
         setImage(objectUrl);
     }
+
+
 
 
     const onSubmit = async (data) => {
@@ -104,15 +108,17 @@ const AddDish = () => {
               />
             </label>
       
-            <label className={styles.add_label}>
-              Family Price
-              <input
-                type="number"
-                {...register("priceFamily")}
-                placeholder="Familie pris"
-                className={styles.add_input}
-              />
-            </label>
+            {chosenCategory === "Pizzaer" && (
+  <label className={styles.add_label}>
+    Family Price
+    <input
+      type="number"
+      {...register("priceFamily")}
+      placeholder="Familie pris"
+      className={styles.add_input}
+    />
+  </label>
+)}
       
             <label className={styles.add_label}>
               Ingredients (separate with commas)
@@ -123,8 +129,20 @@ const AddDish = () => {
                 className={styles.add_input}
               />
             </label>
-      
+              {/* Category should be dropdown select */}
             <label className={styles.add_label}>
+              Category
+              <select {...register("category")} className={styles.add_input} onChange={(e) => setChosenCategory(e.target.value)}>
+                {categories.map((category) => (
+                  <option key={category._id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+                
+            {/* <label className={styles.add_label}>
               Category
               <input
                 type="text"
@@ -132,7 +150,7 @@ const AddDish = () => {
                 placeholder="Indtast kategori"
                 className={styles.add_input}
               />
-            </label>
+            </label> */}
       
             <label className={styles.add_label}>
               Description

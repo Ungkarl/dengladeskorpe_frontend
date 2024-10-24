@@ -9,7 +9,7 @@ const MessagesDashboard = () => {
     const { deleteMessage, updateMessage } = useAuth();
     useEffect(() => {
         if (role === "guest") {
-            navigate('/management');
+            navigate('/dashboard');
         }
     }, [role, navigate]);
 

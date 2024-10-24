@@ -32,8 +32,13 @@ import EditMessage from './components/BackofficeComponents/Messages/EditMessage/
 import DishesDashboard from './pages/backoffice/dishesDashboard/DishesDashboard.jsx'
 import AddDish from './components/BackofficeComponents/DishesBackoffice/AddDish/AddDish.jsx'
 import UpdateDish from './components/BackofficeComponents/DishesBackoffice/UpdateDish/UpdateDish.jsx'
+import DeleteDish from './components/BackofficeComponents/DishesBackoffice/DeleteDish/DeleteDish.jsx'
 
 
+
+import OrdersDashboard from './pages/backoffice/ordersDashboard/OrdersDashboard.jsx'
+import EditOrder from './components/BackofficeComponents/Orders/EditOrder/EditOrder.jsx'
+import DeleteOrder from './components/BackofficeComponents/Orders/DeleteOrder/DeleteOrder.jsx'
 import { useEffect } from 'react'
 
 function App() {
@@ -93,7 +98,7 @@ function App() {
             },
             {
               path: 'delete/:id',
-              element: <div>Delete dish</div>
+              element: <DeleteDish />
             },
           ]
         },
@@ -131,15 +136,15 @@ function App() {
         },
         {
           path: 'orders',
-          element: <div>Orders</div>,
+          element: <OrdersDashboard />,
           children: [
             {
-              path: 'read/:id',
-              element: <div>Read order</div>
+              path: 'edit/:id',
+              element: <EditOrder />
             },
             {
               path: 'delete/:id',
-              element: <div>Delete order</div>
+              element: <DeleteOrder />
             }
           ]
         }

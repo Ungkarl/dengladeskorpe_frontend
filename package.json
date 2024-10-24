@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/just-another-hand": "^5.1.0",
     "@fontsource/kurale": "^5.1.0",
+    "@gsap/react": "^2.1.1",
     "@react-icons/all-files": "^4.1.0",
     "@uidotdev/usehooks": "^2.4.1",
     "jwt-decode": "^4.0.0",

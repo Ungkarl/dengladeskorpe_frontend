@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { createContext, useState, useEffect } from "react";
 

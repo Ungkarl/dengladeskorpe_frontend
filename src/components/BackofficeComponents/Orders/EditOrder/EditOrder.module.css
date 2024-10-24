@@ -1,4 +1,9 @@
-.editMessageContainer {
+
+
+
+
+
+.editOrderContainer {
     /* erstattet med .editProductContainer */
     width: 100%;
     height: 100vh;
@@ -15,7 +20,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.editMessageForm {
+.editOrderForm {
     /* erstattet med .formContainer */
     width: 100%;
     max-width: 400px;
@@ -32,12 +37,12 @@
     position: relative;
 }
 
-.messageBackButton {
+.OrderBackButton {
     /* erstattet med .backButton */
     z-index: 99;
 }
 
-.messageBackButton svg {
+.OrderBackButton svg {
     /* erstattet med .backButton svg */
     position: absolute;
     top: 15px;

@@ -1,57 +1,43 @@
-.deleteDishContainer {
+.deleteOrderContainer {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--light-beige);
-    font-family: 'Montserrat', sans-serif;
+    background-color:  var(--light-beige);
 
-    .dish {
+    .order {
         width: 100%;
         max-width: 400px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 5px;
         padding: 30px;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
         justify-content: center;
         align-items: center;
         position: relative;
 
-        .dishImgContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            width: 100%;
-
-            .dishImg {
-                
-                height: 150px;
-                width: auto;
-                object-fit: contain;
-                border: 1px solid var(--white-color);
-                
-            }
-        }
-
-        .dishInfo {
+        .orderInfo {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            color: var(--dark-grey);
+            padding: 30px;
         }
+
+        
     }
 }
 
@@ -76,7 +62,7 @@
     top: -20%;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--white-color);
+    color: var(--dark-grey);
     font-size: 20px;
     width: 100%;
     text-align: center;
@@ -84,7 +70,7 @@
 
 
 
-.dishBackButton {
+.orderBackButton {
     position: absolute;
     left: 15px;
     top: 15px;
@@ -96,5 +82,5 @@
         cursor: pointer;
         transition: all 0.3s;
 
-}
+    }
 }

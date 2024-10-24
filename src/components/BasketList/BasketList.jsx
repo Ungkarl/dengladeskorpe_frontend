@@ -1,6 +1,6 @@
 import { useBasket } from "../../hooks/useBasket";
 import styles from "./BasketList.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FullscreenLoader from "../FullscreenLoader/FullscreenLoader";
 
@@ -12,40 +12,41 @@ const BasketList = () => {
     const navigate = useNavigate();
 
 
-const onOrderPlace = async () => {
-    setIsLoading(true); // Sæt loading til true
-    const order = {
-        dishes: basket.map(item => ({
-            dish: item.dish,
-            amount: item.quantity,
-            size: item.size,
-            extraIngredients: item.extraIngredients,
-            
-        })),
-        comment: comment,
-        totalPrice: basketTotal,
-    };
-
-    //fake loading
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-
-    const placeOrderResult = await placeOrder(order);
-    console.log(placeOrderResult);
-    setIsLoading(false); // Sæt loading til false, når bestilling er færdig
-    if (placeOrderResult.status === 'ok') {
-        
-        setOrderStatus(true);
-        setBasket([]);       
-    }
-
-};
-useEffect(() => {
-    if (orderStatus) {
+    const onOrderPlace = async () => {
+        setIsLoading(true); 
+    
+        const order = {
+            dishes: basket.map(item => ({
+                dish: item.dish,
+                amount: item.quantity,
+                size: item.size,
+                extraIngredients: item.extraIngredients,
+            })),
+            comment: comment,
+            totalPrice: basketTotal,
+        };
+    
+        // Tjek om kurven er tom
+        if (order.dishes.length === 0) {
+            setIsLoading(false);
+            return;
+        }
+    
+        // Fake loading
+        await new Promise((resolve) => setTimeout(resolve, 2500));
+    
+        const placeOrderResult = await placeOrder(order);
         setTimeout(() => {
             navigate("/");
-        }, 8000);
-    }
-}, [orderStatus]);
+        }, 5000);  // Viderestil til forsiden efter 5 sekunder
+        console.log(placeOrderResult);
+        setIsLoading(false); // Sæt loading til false, når bestilling er færdig
+    
+        if (placeOrderResult.status === 'ok') {
+            setOrderStatus(true);
+            setBasket([]);     
+        }
+    };
 
   
   
@@ -60,7 +61,7 @@ return (
             <div className={styles.order_success}>
                 <img src="/assets/images/pineapple.png" alt="" />
                 <p className={styles.success_message}>Tak for din bestilling!</p>
-                <p>Du viderestilles nu til forsiden...</p>
+                <p className={styles.success_message}>Du viderestilles nu til forsiden...</p>
                 <div className={styles.success_overlay}></div>
             </div>
         ) : (

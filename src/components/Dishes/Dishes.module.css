@@ -29,7 +29,7 @@
         .category {
             width: 33.33%;
             max-width: 200px;
-            width: 350px;
+           cursor: pointer;
             position: relative;
             display: flex;
             justify-content: center;
@@ -50,9 +50,14 @@
                 color: var(--white-color);
                 -webkit-text-stroke-width: 1px;
                 -webkit-text-stroke-color: var(--black-alternative);
+                -webkit-user-select: none;
+                user-select: none;
             }
-
-        }
+            &.activeCategory {
+                background-color: #e2c7bf;
+                border-radius: 10px;
+            }
+        } 
     }
 }
 
@@ -261,4 +266,12 @@
     .dish {
         width: 350px;
     }
+    .dishes_container{
+        .categories {
+            .category {
+                width: 350px;
+            }
+        }
+    }
+
   }

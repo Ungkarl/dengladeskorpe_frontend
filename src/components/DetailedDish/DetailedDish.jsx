@@ -113,9 +113,11 @@ const DetailedDish = () => {
                 <h3 className={styles.dish_size_title}>Vælg størrelse</h3>
                 {/* dropdown */}
                 <select value={selectedSize} onChange={handleSizeChange}>
-                            <option value="normal">Lille - {dish.price.normal} DKK</option>
-                            <option value="family">Familie - {dish.price.family} DKK</option>
-                </select>
+  <option value="normal">Normal - {dish.price.normal} DKK</option>
+  {dish.category === "Pizzaer" && (
+    <option value="family">Familie - {dish.price.family} DKK</option>
+  )}
+</select>
                 <div className={styles.price}>
                     <h3>Pris</h3>
                     <p>{selectedSize === 'normal' ? dish.price.normal : dish.price.family} DKK</p>
