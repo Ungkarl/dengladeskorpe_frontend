@@ -1,8 +1,12 @@
-# React + Vite
+# DEN GLADE SKORPE EKSAMENSOPGAVE - ANDREAS PEDERSEN
+Download projektet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+npm install
 
-Currently, two official plugins are available:
+NPM Scripts -> dev vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Projektet skulle nu kører.
+
+Husk at hente backenden, og kør den server også.
+
+
