@@ -19,7 +19,7 @@ const Dishes = () => {
   //Filter dishes based on the category chosen & search term
   const filteredDishes = dishes.filter((dish) => { 
 
-    //Show dishes that match the current category and search term. If null show all.
+    //Show dishes that match the category chosen. If no category is chosen, show all dishes.
     const matchesCategory = currentCategory === null || dish.category === currentCategory; 
 
     //Show dishes that match the search term. Title or ingredients.

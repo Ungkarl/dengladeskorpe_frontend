@@ -8,7 +8,6 @@ import { createContext, useEffect, useState } from "react";
 export const FetchContextProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
     const [dishes, setDishes] = useState([]);
-
     const [employees, setEmployees] = useState([]);
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
